@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Telemedicine App</title>
+    <style>
+        /* Basic Reset and Styling */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f4f7fa; }
+        header { background: #007bff; color: white; padding: 20px; text-align: center; }
+        nav { margin-top: 10px; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .hero { background: #e3f2fd; padding: 60px 20px; text-align: center; }
+        .hero h1 { font-size: 2.5em; margin-bottom: 20px; }
+        .hero p { font-size: 1.2em; margin-bottom: 30px; }
+        .btn { background: #28a745; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; margin: 10px; }
+        .btn-secondary { background: #007bff; }
+        section { padding: 50px 20px; max-width: 1200px; margin: auto; }
+        h2 { text-align: center; margin-bottom: 40px; color: #007bff; }
+        form { max-width: 500px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        input, select, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .profile-preview { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 30px; }
+        footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Telemedicine App</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#signup">Signup</a>
+            <a href="#login">Login</a>
+            <a href="#profile">Patient Profile</a>
+            <a href="#doctor">For Doctors</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Secure Telemedicine for Better Health</h1>
+        <p>Connect with doctors, share your medical profile safely, and get care from anywhere.</p>
+        <button class="btn" onclick="document.getElementById('signup').scrollIntoView();">Sign Up as Patient</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('signup').scrollIntoView();">Sign Up as Doctor</button>
+    </section>
+
+    <section id="signup">
+        <h2>Sign Up</h2>
+        <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <select required>
+                <option value="">Select Role</option>
+                <option>Patient</option>
+                <option>Doctor</option>
+            </select>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <button type="submit" class="btn">Create Account</button>
+            <p style="text-align:center; margin-top:20px;">Already have an account? <a href="#login">Login</a></p>
+        </form>
+    </section>
+
+    <section id="login">
+        <h2>Login</h2>
+        <form>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" class="btn">Login</button>
+            <p style="text-align:center; margin-top:20px;"><a href="#">Forgot Password?</a></p>
+        </form>
+    </section>
+
+    <section id="profile">
+        <h2>Patient Medical Profile</h2>
+        <p style="text-align:center; max-width:800px; margin:auto;">Fill in your details securely – only shared with doctors you approve.</p>
+        <div class="profile-preview">
+            <form>
+                <div class="form-grid">
+                    <input type="text" placeholder="Full Name">
+                    <input type="number" placeholder="Age">
+                    <select><option>Gender</option><option>Male</option><option>Female</option><option>Other</option></select>
+                    <input type="text" placeholder="Weight (kg)">
+                    <input type="text" placeholder="Blood Pressure">
