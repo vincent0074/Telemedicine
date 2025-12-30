@@ -1,2 +1,0 @@
-# Telemedicine
-Just testing shit 
