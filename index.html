@@ -1,53 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vincent Telemedicine App</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Securia | Global Transfers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #EFF3F8 0%, #E8EDF2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+        }
+
+        /* Premium card container */
+        .app-container {
+            max-width: 520px;
+            width: 100%;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .page {
+            padding: 28px 24px 36px;
+        }
+
+        /* Modern brand header */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+        }
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #0052CC, #2684FF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0A2540;
+            letter-spacing: -0.02em;
+        }
+        .badge {
+            background: #F0F5FF;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #0052CC;
+        }
+
+        /* Form styles */
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.3px;
+            color: #34495E;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 16px;
+            border: 1.5px solid #E2E8F0;
+            background: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            outline: none;
+        }
+        input:focus {
+            border-color: #0052CC;
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.08);
+        }
+        button {
+            background: #0052CC;
+            color: white;
+            border: none;
+            padding: 1rem 1rem;
+            border-radius: 44px;
+            font-weight: 700;
+            font-size: 1rem;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+        button:hover {
+            background: #0042A8;
+            transform: scale(0.98);
+        }
+        button.secondary {
+            background: #F1F5F9;
+            color: #1E293B;
+        }
+        button.secondary:hover {
+            background: #E2E8F0;
+        }
+        .error-msg {
+            color: #E53E3E;
+            font-size: 0.75rem;
+            margin-top: 0.6rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Dashboard premium card */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .user-greeting {
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: #F1F5F9;
+            padding: 6px 14px;
+            border-radius: 40px;
+            color: #1E293B;
+        }
+        .logout-btn {
+            background: transparent;
+            color: #64748B;
+            width: auto;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 0;
+            border: 1px solid #E2E8F0;
+        }
+        .logout-btn:hover {
+            background: #F8FAFC;
+            transform: none;
+        }
+        .balance-card {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            border-radius: 28px;
+            padding: 1.6rem;
+            color: white;
+            margin: 1rem 0 1.5rem 0;
+        }
+        .balance-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 0.4rem;
+        }
+        .balance-amount {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .account-number {
+            font-family: monospace;
+            background: rgba(255,255,255,0.1);
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            margin-top: 0.9rem;
+        }
+        .transfer-card {
+            background: #F8FAFE;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border: 1px solid #E9EDF2;
+        }
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #EDF2F7;
+        }
+        .transaction-desc {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1A2C3E;
+        }
+        .transaction-date {
+            font-size: 0.65rem;
+            color: #94A3B8;
+            margin-top: 0.2rem;
+        }
+        .transaction-amount {
+            font-weight: 700;
+            color: #E53E3E;
+            font-size: 0.95rem;
+        }
+        .fee-box {
+            background: #F8FAFE;
+            border: 1px solid #E9EDF2;
+            border-radius: 24px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .btc-address {
+            background: #0F172A;
+            color: #F5B042;
+            font-family: monospace;
+            padding: 0.9rem;
+            border-radius: 18px;
+            font-size: 0.7rem;
+            word-break: break-all;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .qr-sim {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .qr-sim img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .checkmark-circle {
+            width: 64px;
+            height: 64px;
+            background: #059669;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        .processing-box {
+            background: #F1F5F9;
+            padding: 1.2rem;
+            border-radius: 24px;
+            text-align: center;
+            color: #1E293B;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+            border-left: 4px solid #0052CC;
+        }
+        .back-link {
+            background: none;
+            color: #0052CC;
+            font-size: 0.8rem;
+            text-align: left;
+            padding: 0;
+            margin-top: 0;
+            font-weight: 600;
+            width: auto;
+        }
+        .back-link:hover {
+            background: none;
+            text-decoration: underline;
+            transform: none;
+        }
+        .small-note {
+            font-size: 0.65rem;
+            color: #94A3B8;
+            margin-top: 0.4rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
+        }
+        .section-title {
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            color: #475569;
+        }
+    </style>
 </head>
-
 <body>
+<div class="app-container" id="appRoot"></div>
 
-<header>
-    <h1>Vincent Telemedicine App</h1>
+<script>
+    const VALID_USERNAME = "Teslagiveaway0331";
+    const VALID_CODE = "220087";
+    const ACCOUNT_MASK = "****2638";
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="signup.html">Signup</a>
-        <a href="login.html">Login</a>
-        <a href="profile.html">Profile</a>
-        <a href="doctor.html">Doctors</a>
-    </nav>
-</header>
+    function render() {
+        const root = document.getElementById('appRoot');
+        if (!root) return;
+        const currentPage = sessionStorage.getItem('currentPage') || 'login';
+        if (currentPage === 'login') {
+            root.innerHTML = renderLogin();
+            attachLoginEvents();
+        } else if (currentPage === 'dashboard') {
+            root.innerHTML = renderDashboard();
+            attachDashboardEvents();
+        } else if (currentPage === 'transferForm') {
+            root.innerHTML = renderTransferForm();
+            attachTransferFormEvents();
+        } else if (currentPage === 'feePayment') {
+            root.innerHTML = renderFeePayment();
+            attachFeePaymentEvents();
+        } else if (currentPage === 'submitted') {
+            root.innerHTML = renderSubmitted();
+            attachSubmittedEvents();
+        }
+    }
 
-<section class="hero">
-    <h1>Secure Telemedicine for Better Health</h1>
+    function renderLogin() {
+        return `
+            <div class="page">
+                <div class="brand-header">
+                    <div class="logo">
+                        <div class="logo-icon">S</div>
+                        <span class="logo-text">Securia</span>
+                    </div>
+                    <div class="badge">SecureBank</div>
+                </div>
+                <h2 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Welcome back</h2>
+                <p style="color: #64748B; margin-bottom: 1.8rem; font-size: 0.85rem;">Sign in to access global transfers</p>
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter your username" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label>Access code</label>
+                    <input type="password" id="loginCode" placeholder="6-digit code">
+                </div>
+                <button id="loginBtn">Sign in →</button>
+                <div id="loginFeedback" class="error-msg"></div>
+                <div class="note-text" style="margin-top: 1.5rem;">Test credentials: Teslagiveaway0331 / 220087</div>
+            </div>
+        `;
+    }
 
-    <p>
-        Connect with doctors, manage your health profile, and get care from anywhere.
-    </p>
+    function attachLoginEvents() {
+        const loginBtn = document.getElementById('loginBtn');
+        const userInput = document.getElementById('loginUsername');
+        const codeInput = document.getElementById('loginCode');
+        const feedback = document.getElementById('loginFeedback');
 
-    <button class="btn" onclick="window.location.href='signup.html'">
-        Get Started
-    </button>
+        const attemptLogin = () => {
+            const username = userInput?.value.trim();
+            const code = codeInput?.value.trim();
+            if (username === VALID_USERNAME && code === VALID_CODE) {
+                if (feedback) {
+                    feedback.innerHTML = "✓ Verifying credentials...";
+                    feedback.style.color = "#059669";
+                }
+                setTimeout(() => {
+                    if (!sessionStorage.getItem('balance')) sessionStorage.setItem('balance', '85000');
+                    sessionStorage.setItem('accountMask', ACCOUNT_MASK);
+                    sessionStorage.setItem('currentPage', 'dashboard');
+                    render();
+                }, 600);
+            } else {
+                if (feedback) {
+                    feedback.innerHTML = "❌ Invalid credentials. Please try again.";
+                    feedback.style.color = "#E53E3E";
+                }
+            }
+        };
+        loginBtn?.addEventListener('click', attemptLogin);
+        [userInput, codeInput].forEach(inp => inp?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') attemptLogin();
+        }));
+    }
 
-    <button class="btn btn-secondary" onclick="window.location.href='login.html'">
-        Login
-    </button>
-</section>
+    function renderDashboard() {
+        let bal = sessionStorage.getItem('balance') || '85000';
+        const balance = parseFloat(bal);
+        const transactions = [
+            { desc: "Giveaway deposit", amount: -60000, date: "May 7, 2026" },
+            { desc: "Giveaway deposit", amount: -85000, date: "May 10, 2026" },
+            { desc: "Giveaway deposit", amount: -50000, date: "May 17, 2026" },
+            { desc: "Giveaway deposit", amount: -55000, date: "Apr 5, 2026" },
+            { desc: "Giveaway deposit", amount: -40000, date: "Apr 12, 2026" },
+            { desc: "Giveaway deposit", amount: -40000, date: "Apr 23, 2026" }
+        ];
+        return `
+            <div class="page">
+                <div class="dashboard-header">
+                    <div class="user-greeting">👋 Participant 331</div>
+                    <button id="logoutBtnDashboard" class="logout-btn">Logout</button>
+                </div>
+                <div class="balance-card">
+                    <div class="balance-label">Total balance</div>
+                    <div class="balance-amount">$${balance.toLocaleString()}</div>
+                    <div class="account-number">Account ${ACCOUNT_MASK}</div>
+                </div>
+                <div class="transfer-card">
+                    <div style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1rem;">💸 International transfer</div>
+                    <p style="font-size: 0.8rem; color: #5B6E8C; margin-bottom: 1rem;">Send money securely to any bank worldwide.</p>
+                    <button id="initiateTransferBtn" style="background: #0052CC;">Send funds →</button>
+                </div>
+                <div>
+                    <div class="section-title">📋 Recent withdrawals</div>
+                    ${transactions.map(tx => `
+                        <div class="transaction-item">
+                            <div>
+                                <div class="transaction-desc">${tx.desc}</div>
+                                <div class="transaction-date">${tx.date}</div>
+                            </div>
+                            <div class="transaction-amount">-$${Math.abs(tx.amount).toLocaleString()}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
 
-<section>
-    <h2 style="text-align:center;">Why Use Our Platform</h2>
+    function attachDashboardEvents() {
+        document.getElementById('logoutBtnDashboard')?.addEventListener('click', () => {
+            sessionStorage.clear();
+            sessionStorage.setItem('currentPage', 'login');
+            render();
+        });
+        document.getElementById('initiateTransferBtn')?.addEventListener('click', () => {
+            sessionStorage.setItem('currentPage', 'transferForm');
+            render();
+        });
+    }
 
-    <p style="max-width:800px;margin:auto;text-align:center;">
-        Fast access to doctors, secure patient records, and simple healthcare management all in one place.
-    </p>
-</section>
+    function renderTransferForm() {
+        let bal = sessionStorage.getItem('balance') || '85000';
+        const balance = parseFloat(bal);
+        return `
+            <div class="page">
+                <button id="backFromTransfer" class="back-link" style="margin-bottom: 1rem;">← Back to dashboard</button>
+                <h2 style="font-size: 1.5rem; margin-bottom: 0.2rem;">New transfer</h2>
+                <p style="font-size: 0.8rem; color: #64748B; margin-bottom: 1.5rem;">Fill recipient details</p>
+                <div class="transfer-detail" style="background: #F8FAFC; border-radius: 20px; padding: 1rem; margin: 0 0 1.2rem 0; font-size: 0.85rem;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>From account</span>
+                        <span><strong>${ACCOUNT_MASK}</strong> · $${balance.toLocaleString()} avail.</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Recipient bank name</label>
+                    <input type="text" id="recipientBank" placeholder="Full bank name">
+                </div>
+                <div class="input-group">
+                    <label>Recipient account number</label>
+                    <input type="text" id="recipientAccount" placeholder="Account number or IBAN">
+                </div>
+                <div class="input-group">
+                    <label>Transfer amount (USD)</label>
+                    <input type="number" id="transferAmount" placeholder="0.00" min="1" max="${balance}">
+                    <div class="small-note">Available: $${balance.toLocaleString()}</div>
+                </div>
+                <button id="continueFeeBtn">Continue →</button>
+                <div id="transferError" class="error-msg"></div>
+            </div>
+        `;
+    }
 
-<footer>
-    <p>© 2026 Vincent Telemedicine App. All rights reserved.</p>
-</footer>
+    function attachTransferFormEvents() {
+        document.getElementById('backFromTransfer')?.addEventListener('click', () => {
+            sessionStorage.setItem('currentPage', 'dashboard');
+            render();
+        });
+        const continueBtn = document.getElementById('continueFeeBtn');
+        const errorDiv = document.getElementById('transferError');
+        continueBtn?.addEventListener('click', () => {
+            const bank = document.getElementById('recipientBank')?.value.trim();
+            const acc = document.getElementById('recipientAccount')?.value.trim();
+            const amountRaw = document.getElementById('transferAmount')?.value;
+            const amount = parseFloat(amountRaw);
+            let bal = sessionStorage.getItem('balance') || '85000';
+            const currentBal = parseFloat(bal);
+            if (!bank || !acc) {
+                if (errorDiv) errorDiv.innerText = "Please fill in all recipient details.";
+                return;
+            }
+            if (isNaN(amount) || amount <= 0) {
+                if (errorDiv) errorDiv.innerText = "Enter a valid transfer amount.";
+                return;
+            }
+            if (amount > currentBal) {
+                if (errorDiv) errorDiv.innerText = `Insufficient balance. Available: $${currentBal.toLocaleString()}`;
+                return;
+            }
+            sessionStorage.setItem('pendingAmount', amount.toString());
+            if (errorDiv) {
+                errorDiv.innerHTML = "⚡ Verifying recipient...";
+                errorDiv.style.color = "#0052CC";
+            }
+            setTimeout(() => {
+                sessionStorage.setItem('currentPage', 'feePayment');
+                render();
+            }, 1000);
+        });
+    }
 
+    function renderFeePayment() {
+        return `
+            <div class="page">
+                <div class="processing-box" id="loadingGateway">
+                    🔐 Preparing secure gateway...
+                </div>
+                <div id="feeContent" style="display: none;">
+                    <h3 style="margin-bottom: 0.5rem;">💳 Fee payment required</h3>
+                    <p style="font-size: 0.75rem; color: #64748B; margin-bottom: 1.2rem;">Processing fee: $500 BTC</p>
+                    <div class="fee-box">
+                        <div class="qr-sim">
+                           <svg width="100" height="100" viewBox="0 0 100 100" style="background: white;"><rect width="100" height="100" fill="#0F172A"/><path d="M20,20 L30,20 L30,30 L20,30 Z M40,20 L50,20 L50,30 L40,30 Z M60,20 L70,20 L70,30 L60,30 Z M80,20 L90,20 L90,30 L80,30 Z M20,40 L30,40 L30,50 L20,50 Z M50,40 L60,40 L60,50 L50,50 Z M70,40 L80,40 L80,50 L70,50 Z M20,60 L30,60 L30,70 L20,70 Z M40,60 L50,60 L50,70 L40,70 Z M60,60 L70,60 L70,70 L60,70 Z M80,60 L90,60 L90,70 L80,70 Z M20,80 L30,80 L30,90 L20,90 Z M50,80 L60,80 L60,90 L50,90 Z M70,80 L80,80 L80,90 L70,90 Z" fill="#F5B042"/></svg>
+                        </div>
+                        <div class="btc-address">
+                            bc1q6fcv8a76rrld4hz6680vwe6kktse5dxpejnwgt
+                        </div>
+                        <p style="font-size: 0.8rem; text-align: center; margin: 0.8rem 0;">Send <strong>$500 in Bitcoin</strong> exactly to the address above. Enter your TXID to verify.</p>
+                    </div>
+                    <div class="input-group">
+                        <label>Bitcoin Transaction ID (TXID)</label>
+                        <input type="text" id="btcTxid" placeholder="e.g., 7c8e9f...">
+                        <div class="small-note">Paste your 64-character transaction hash</div>
+                    </div>
+                    <button id="verifyTxidBtn">Verify payment ✓</button>
+                    <button id="cancelFeeBtn" class="secondary">Cancel transfer</button>
+                    <div id="feeError" class="error-msg"></div>
+                </div>
+            </div>
+        `;
+    }
+
+    function attachFeePaymentEvents() {
+        setTimeout(() => {
+            const loader = document.getElementById('loadingGateway');
+            const content = document.getElementById('feeContent');
+            if (loader && content) {
+                loader.style.display = 'none';
+                content.style.display = 'block';
+            }
+        }, 1000);
+
+        const verifyBtn = document.getElementById('verifyTxidBtn');
+        const txidInput = document.getElementById('btcTxid');
+        const errorSpan = document.getElementById('feeError');
+
+        verifyBtn?.addEventListener('click', () => {
+            const txid = txidInput?.value.trim();
+            if (!txid || txid.length < 10) {
+                if (errorSpan) errorSpan.innerText = "Please enter a valid TXID (at least 10 characters).";
+                return;
+            }
+            let balance = parseFloat(sessionStorage.getItem('balance') || '85000');
+            const pendingAmt = parseFloat(sessionStorage.getItem('pendingAmount') || '0');
+            const totalDeduction = 500 + pendingAmt;
+            if (balance < totalDeduction) {
+                if (errorSpan) errorSpan.innerText = "Insufficient balance for fee + transfer amount.";
+                return;
+            }
+            const newBalance = balance - totalDeduction;
+            sessionStorage.setItem('balance', newBalance.toString());
+            sessionStorage.removeItem('pendingAmount');
+            sessionStorage.setItem('currentPage', 'submitted');
+            render();
+        });
+
+        document.getElementById('cancelFeeBtn')?.addEventListener('click', () => {
+            sessionStorage.removeItem('pendingAmount');
+            sessionStorage.setItem('currentPage', 'dashboard');
+            render();
+        });
+    }
+
+    function renderSubmitted() {
+        return `
+            <div class="page" style="text-align: center;">
+                <div class="checkmark-circle">✓</div>
+                <h2 style="margin-bottom: 0.5rem;">Transfer submitted</h2>
+                <p style="color: #059669; font-size: 0.9rem; font-weight: 500;">Your international transfer is being processed.</p>
+                <div style="background: #F8FAFC; border-radius: 24px; padding: 1.2rem; margin: 1.5rem 0;">
+                    <div style="font-size: 0.85rem; font-weight: 500;">⏳ Processing time: 1-5 business days</div>
+                    <div style="font-size: 0.7rem; color: #64748B; margin-top: 0.5rem;">Confirmation will be sent to your registered email.</div>
+                </div>
+                <button id="dashboardFinalBtn" style="background: #0052CC;">Go to dashboard →</button>
+            </div>
+        `;
+    }
+
+    function attachSubmittedEvents() {
+        document.getElementById('dashboardFinalBtn')?.addEventListener('click', () => {
+            sessionStorage.setItem('currentPage', 'dashboard');
+            render();
+        });
+    }
+
+    if (!sessionStorage.getItem('currentPage')) {
+        sessionStorage.setItem('currentPage', 'login');
+        sessionStorage.setItem('balance', '85000');
+        sessionStorage.setItem('accountMask', ACCOUNT_MASK);
+    }
+    render();
+</script>
 </body>
 </html>
