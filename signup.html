@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signup</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
 
-<body>
-
-<header>
-    <h1>Signup</h1>
-</header>
-
-<section>
-
-<form>
     <input type="text" placeholder="Full Name" required>
 
     <input type="email" placeholder="Email" required>
 
     <select required>
-        <option>Select Role</option>
+        <option value="">Select Role</option>
         <option>Patient</option>
         <option>Doctor</option>
     </select>
 
     <input type="password" placeholder="Password" required>
 
-    <button class="btn">
-        Create Account
-    </button>
+    <input type="password" placeholder="Confirm Password" required>
+
+    <button type="submit" class="btn">Create Account</button>
+
+    <p style="text-align:center;margin-top:20px;">
+        Already have an account? <a href="login.html">Login</a>
+    </p>
+
 </form>
-
-</section>
-
-</body>
-</html>
