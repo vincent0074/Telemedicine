@@ -1,14 +1,64 @@
-<section class="page">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
-    <form class="card" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+<body>
 
-        <h2>Login</h2>
+<header>
+    <h1>Login</h1>
+</header>
 
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
+<!-- LOGIN SUCCESS POPUP -->
+<div id="popup" style="
+    display:none;
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#28a745;
+    color:white;
+    padding:15px 25px;
+    border-radius:8px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    font-weight:bold;
+    z-index:9999;
+">
+    Login successful! Redirecting to dashboard...
+</div>
 
-        <button class="btn btn-full">Login</button>
+<section>
 
-    </form>
+<form onsubmit="handleLogin(event)">
+
+    <input type="email" placeholder="Email" required>
+
+    <input type="password" placeholder="Password" required>
+
+    <button class="btn" type="submit">
+        Login
+    </button>
+
+</form>
 
 </section>
+
+<script>
+function handleLogin(event){
+    event.preventDefault();
+
+    const popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+    setTimeout(() => {
+        window.location.href = "dashboard.html";
+    }, 2000);
+}
+</script>
+
+</body>
+</html>
