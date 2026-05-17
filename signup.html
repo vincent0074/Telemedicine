@@ -1,25 +1,39 @@
-<section style="min-height:100vh;display:flex;justify-content:center;align-items:center;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
-    <form style="width:100%;max-width:500px;background:white;padding:30px;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+<body>
 
-        <h2 style="text-align:center;margin-bottom:20px;">Create Account</h2>
+<header>
+    <h1>Signup</h1>
+</header>
 
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email" required>
+<section>
 
-        <select required>
-            <option value="">Select Role</option>
-            <option>Patient</option>
-            <option>Doctor</option>
-        </select>
+<form>
+    <input type="text" placeholder="Full Name" required>
 
-        <input type="password" placeholder="Password" required>
-        <input type="password" placeholder="Confirm Password" required>
+    <input type="email" placeholder="Email" required>
 
-        <button type="submit" class="btn" style="width:100%;">
-            Sign Up
-        </button>
+    <select required>
+        <option>Select Role</option>
+        <option>Patient</option>
+        <option>Doctor</option>
+    </select>
 
-    </form>
+    <input type="password" placeholder="Password" required>
+
+    <button class="btn">
+        Create Account
+    </button>
+</form>
 
 </section>
+
+</body>
+</html>
