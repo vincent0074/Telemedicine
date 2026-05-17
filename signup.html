@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signup</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<section class="page">
 
-<body>
+    <form class="card" onsubmit="handleSignup(event)">
 
-<header>
-    <h1>Signup</h1>
-</header>
+        <h2>Create Account</h2>
 
-<section>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
 
-<form>
-    <input type="text" placeholder="Full Name" required>
+        <select required>
+            <option value="">Select Role</option>
+            <option>Patient</option>
+            <option>Doctor</option>
+        </select>
 
-    <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
 
-    <select required>
-        <option>Select Role</option>
-        <option>Patient</option>
-        <option>Doctor</option>
-    </select>
+        <button class="btn btn-full">Sign Up</button>
 
-    <input type="password" placeholder="Password" required>
-
-    <button class="btn">
-        Create Account
-    </button>
-</form>
+    </form>
 
 </section>
-
-</body>
-</html>
