@@ -1,23 +1,72 @@
-<section class="page">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
-    <form class="card" onsubmit="handleSignup(event)">
+<body>
 
-        <h2>Create Account</h2>
+<header>
+    <h1>Signup</h1>
+</header>
 
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email" required>
+<!-- SUCCESS POPUP -->
+<div id="popup" style="
+    display:none;
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#28a745;
+    color:white;
+    padding:15px 25px;
+    border-radius:8px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    font-weight:bold;
+    z-index:9999;
+">
+    Signup successful! Redirecting to login...
+</div>
 
-        <select required>
-            <option value="">Select Role</option>
-            <option>Patient</option>
-            <option>Doctor</option>
-        </select>
+<section>
 
-        <input type="password" placeholder="Password" required>
-        <input type="password" placeholder="Confirm Password" required>
+<form onsubmit="handleSignup(event)">
 
-        <button class="btn btn-full">Sign Up</button>
+    <input type="text" placeholder="Full Name" required>
 
-    </form>
+    <input type="email" placeholder="Email" required>
+
+    <select required>
+        <option>Select Role</option>
+        <option>Patient</option>
+        <option>Doctor</option>
+    </select>
+
+    <input type="password" placeholder="Password" required>
+
+    <button class="btn" type="submit">
+        Create Account
+    </button>
+
+</form>
 
 </section>
+
+<script>
+function handleSignup(event){
+    event.preventDefault();
+
+    const popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 2000);
+}
+</script>
+
+</body>
+</html>
