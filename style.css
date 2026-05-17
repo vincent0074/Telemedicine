@@ -2,17 +2,18 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    font-family:Arial,sans-serif;
     background:#f4f7fa;
     color:#333;
 }
 
+/* HEADER */
 header{
     background:#007bff;
-    color:white;
+    color:#fff;
     padding:20px;
     text-align:center;
 }
@@ -23,20 +24,16 @@ nav{
 
 nav a{
     color:white;
-    text-decoration:none;
     margin:0 15px;
+    text-decoration:none;
     font-weight:bold;
 }
 
-section{
-    padding:60px 20px;
-    max-width:1000px;
-    margin:auto;
-}
-
+/* HERO */
 .hero{
     text-align:center;
     padding:100px 20px;
+    background:#e3f2fd;
 }
 
 .hero h1{
@@ -45,10 +42,11 @@ section{
 }
 
 .hero p{
-    margin-bottom:30px;
     font-size:1.2rem;
+    margin-bottom:20px;
 }
 
+/* BUTTONS */
 .btn{
     background:#28a745;
     color:white;
@@ -56,8 +54,21 @@ section{
     border:none;
     border-radius:5px;
     cursor:pointer;
+    margin:10px;
 }
 
+.btn-secondary{
+    background:#007bff;
+}
+
+/* SECTIONS */
+section{
+    padding:60px 20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+/* FORMS */
 form{
     background:white;
     padding:30px;
@@ -67,7 +78,7 @@ form{
     box-shadow:0 4px 15px rgba(0,0,0,0.1);
 }
 
-input,select,textarea{
+input, select, textarea{
     width:100%;
     padding:12px;
     margin:10px 0;
@@ -75,6 +86,7 @@ input,select,textarea{
     border-radius:5px;
 }
 
+/* FOOTER */
 footer{
     background:#333;
     color:white;
